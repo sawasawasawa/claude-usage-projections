@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Usage Projections",
+  "description": "Adds linear budget and projected usage bars to Claude's usage settings page.",
+  "version": "1.0",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/settings/usage*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {}
+}
