@@ -2,6 +2,8 @@
 
 Chrome extension that adds **projected usage** and **linear budget** bars to Claude's usage settings page (`claude.ai/settings/usage`).
 
+![Claude Usage Projections screenshot](assets/screenshot.png)
+
 ## What it does
 
 For each usage meter (session and weekly), the extension injects two extra indicators:
