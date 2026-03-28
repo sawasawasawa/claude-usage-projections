@@ -1,6 +1,6 @@
 # Claude Usage Projections
 
-Chrome extension that adds **projected usage** and **linear budget** bars to Claude's usage settings page (`claude.ai/settings/usage`).
+Browser extension that adds **projected usage** and **linear budget** bars to Claude's usage settings page (`claude.ai/settings/usage`). Works in Chrome and Firefox.
 
 ![Claude Usage Projections screenshot](assets/screenshot.png)
 
@@ -13,11 +13,23 @@ For each usage meter (session and weekly), the extension injects two extra indic
 
 ## Install
 
+### Chrome
+
 1. Clone this repo
-2. Open Chrome, go to `chrome://extensions`
+2. Go to `chrome://extensions`
 3. Enable **Developer mode** (toggle in top-right)
 4. Click **Load unpacked** and select the cloned folder
 5. Navigate to [claude.ai/settings/usage](https://claude.ai/settings/usage)
+
+### Firefox
+
+1. Clone this repo
+2. Go to `about:debugging#/runtime/this-firefox`
+3. Click **Load Temporary Add-on**
+4. Select the `manifest.json` file from the cloned folder
+5. Navigate to [claude.ai/settings/usage](https://claude.ai/settings/usage)
+
+Note: temporary add-ons in Firefox are removed when the browser closes. You'll need to reload it each session.
 
 ## Bonus: Claude Code status line link
 
