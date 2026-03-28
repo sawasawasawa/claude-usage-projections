@@ -19,6 +19,18 @@ For each usage meter (session and weekly), the extension injects two extra indic
 4. Click **Load unpacked** and select the cloned folder
 5. Navigate to [claude.ai/settings/usage](https://claude.ai/settings/usage)
 
+## Bonus: Claude Code status line link
+
+If you use Claude Code, you can add a clickable link to the usage page in your status line. Add this to your `statusLine` command script:
+
+```bash
+USAGE_URL="https://claude.ai/settings/usage"
+link=$(printf '\033]8;;%s\033\\%s\033]8;;\033\\' "$USAGE_URL" "usage")
+printf "%s" "$link"
+```
+
+This renders a clickable "usage" label that opens the usage page (with the extension active) directly from your terminal.
+
 ## Files
 
 | File | Purpose |
