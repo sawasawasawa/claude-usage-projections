@@ -21,17 +21,6 @@ For each usage meter (session and weekly), the extension injects two extra indic
 4. Click **Load unpacked** and select the cloned folder
 5. Navigate to [claude.ai/settings/usage](https://claude.ai/settings/usage)
 
-### Firefox
-
-Download the signed `.xpi` from the [latest release](../../releases/latest), open it in Firefox, and it installs permanently.
-
-To build from source for development, use [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/):
-
-```bash
-npm install -g web-ext
-web-ext run    # launches Firefox with the extension loaded
-```
-
 ## Bonus: Claude Code status line link
 
 You can add a clickable link to the usage page directly in your Claude Code status line.
@@ -84,6 +73,17 @@ The link opens `claude.ai/settings/usage` in your browser (where the extension a
 | `manifest.json` | Extension manifest (Manifest V3, no special permissions) |
 | `content.js` | Content script that reads progress bars and injects projection/budget UI |
 | `styles.css` | Styling for projection and budget bars |
+
+## Firefox
+
+The extension is compatible with Firefox. For development, use [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/):
+
+```bash
+npm install -g web-ext
+web-ext run
+```
+
+For permanent installation, you can submit the extension as unlisted on [addons.mozilla.org](https://addons.mozilla.org/developers/) to get a signed `.xpi` file, then open it in Firefox.
 
 ## License
 
