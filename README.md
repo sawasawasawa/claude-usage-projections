@@ -33,9 +33,48 @@ Note: temporary add-ons in Firefox are removed when the browser closes. You'll n
 
 ## Bonus: Claude Code status line link
 
-If you use Claude Code, you can add a clickable link to the usage page in your status line. Use [OSC 8 hyperlinks](https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda) to make a clickable label that opens the usage page (with the extension active) directly from your terminal.
+You can add a clickable link to the usage page directly in your Claude Code status line.
 
 ![Status line with usage link](assets/statusline.png)
+
+### How to set it up
+
+Claude Code supports a custom status line via `~/.claude/settings.json`. You need a shell script that reads JSON from stdin and outputs formatted text.
+
+**1. Create the script** at `~/.claude/usage-statusline.sh`:
+
+```bash
+#!/bin/bash
+# Reads Claude Code status JSON from stdin, appends a clickable usage link.
+input=$(cat)
+
+# Extract session cost from the JSON input
+session_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
+cost_display=$(printf '$%.2f' "$session_cost")
+
+# OSC 8 hyperlink: makes the text clickable in supported terminals
+url="https://claude.ai/settings/usage"
+link=$(printf '\033]8;;%s\033\\🔥usage %s\033]8;;\033\\' "$url" "$cost_display")
+
+printf "%s\n" "$link"
+```
+
+```bash
+chmod +x ~/.claude/usage-statusline.sh
+```
+
+**2. Add it to your settings** in `~/.claude/settings.json`:
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/usage-statusline.sh"
+  }
+}
+```
+
+The link opens `claude.ai/settings/usage` in your browser (where the extension adds the projection bars). Requires a terminal that supports [OSC 8 hyperlinks](https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda) (iTerm2, Kitty, WezTerm, Windows Terminal, etc.).
 
 ## Files
 
