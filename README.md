@@ -23,16 +23,14 @@ For each usage meter (session and weekly), the extension injects two extra indic
 
 ### Firefox
 
-1. Install [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/): `npm install -g web-ext`
-2. Clone this repo
-3. Run `web-ext run` from the cloned folder
-4. Navigate to [claude.ai/settings/usage](https://claude.ai/settings/usage)
+Download the signed `.xpi` from the [latest release](../../releases/latest), open it in Firefox, and it installs permanently.
 
-To install permanently, use Firefox Developer Edition or Nightly:
+To build from source for development, use [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/):
 
-1. Go to `about:config`, set `xpis.signatures.required` to `false`
-2. Go to `about:addons`, click the gear icon, select **Install Add-on From File**
-3. Select the folder or a `.zip` of it
+```bash
+npm install -g web-ext
+web-ext run    # launches Firefox with the extension loaded
+```
 
 ## Bonus: Claude Code status line link
 
